@@ -3,9 +3,6 @@ import enum
 import math
 import os
 import re
-from typing import Mapping
-
-from sqlalchemy import Interval
 
 def ExitWithPrint(msg: str):
     print(msg)
