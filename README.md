@@ -18,3 +18,6 @@ Tool for annotation and filtering of optical mapping structural variants. The to
 # Web app
 * Offers simple user interface accessible online.
 * http://app.olgen.cz/om38to13/
+
+# Test Data
+* For testing purposes, the smap file in the test_data directory originating from sample GM24149 of the Bionano Genomics dataset (https://bionanogenomics.com/library/datasets/) can be used.
