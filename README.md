@@ -10,6 +10,10 @@ Tool for annotation and filtering of optical mapping structural variants. The to
     `python3 om38to13.py filter variants.smap -o variants.filtered.smap`
   - View - operation searches for the input interval and prints all the information to the console.
     `python3 view chr1:1000000-2000000`
+* The application assumes that the path to the om38to13.py file and to the interval data directory is the same. If the user needs to separate the python script from the data, they can specify the path to the data directory using:
+    `python om38to13.py -w data_directory ...`
+* To specify a minimum distance from the translocation breakpoint, default distance = 10,000:
+    `python om38to13.py -d distance ...`
 
 # Web app
 * Offers simple user interface accessible online.
