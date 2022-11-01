@@ -417,6 +417,16 @@ class OMGenomeTools:
 def run(args):    
     op = args.op
     input = args.input
+
+    default_datadir = "data/"
+    if args.data_dir != None:
+        default_datadir = args.data_dir
+        if os == 'nt':
+            if not default_datadir.endswith("\\"):
+                default_datadir += "\\"
+        else:
+            if not default_datadir.endswith("/"):
+                default_datadir += "/"
     
     #verify the input and op correctness
     if op in ["annotate" ,"filter"]:
@@ -425,13 +435,13 @@ def run(args):
         if op == "annotate":
             if args.output == None:
                 args.output = args.input.replace(".smap",".annotated.txt")
-            OMGenomeTools.Annotate(args.input, "data/fromHG38toCHM13-alignments", "data/fromCHM13toHG38-alignments", "data/prediction_38.bed", args.output)
+            OMGenomeTools.Annotate(args.input, default_datadir + "fromHG38toCHM13-alignments", default_datadir + "fromCHM13toHG38-alignments", default_datadir + "prediction_38.bed", args.output, args.distance)
         elif op == "filter":
             if args.output == None:
                 args.output = args.input.replace(".smap",".filtered.smap")
-            OMGenomeTools.Filter(args.input, None, "data/fromHG38toCHM13-alignments", "data/fromCHM13toHG38-alignments", "data/prediction_38.bed", args.output)
+            OMGenomeTools.Filter(args.input, None, default_datadir + "fromHG38toCHM13-alignments", default_datadir + "fromCHM13toHG38-alignments", default_datadir + "prediction_38.bed", args.output, args.distance)
     elif op == "view":
-        OMGenomeTools.View(args.input,"data/fromHG38toCHM13-alignments", "data/fromCHM13toHG38-alignments", "data/prediction_38.bed")
+        OMGenomeTools.View(args.input, default_datadir + "fromHG38toCHM13-alignments", default_datadir + "fromCHM13toHG38-alignments", default_datadir + "prediction_38.bed")
         
 
     #OMGenomeTools.DoWork(args.input, "data/fromHG38toCHM13-alignments", "data/fromCHM13toHG38-alignments", "data/prediction_hg38.bed", args.output)
